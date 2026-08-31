@@ -31,4 +31,3 @@ bool isMatch(const char* s, const char* p) {
     
     return p[pIdx] == '\0';
 }
-

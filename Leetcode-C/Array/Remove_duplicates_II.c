@@ -11,4 +11,3 @@ int removeDuplicates(int* nums, int numsSize) {
     }
     return index;
 }
-
