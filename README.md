@@ -33,6 +33,16 @@ A curated collection of Leetcode problems implemented in C, organized by categor
 
 ---
 
+### 📁 Binary Search Problems (`Leetcode-C/Binary Search/`)
+
+| # | Problem | File Name | Time Complexity | Space Complexity | Approach / Algorithm |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 4 | **Median of Two Sorted Arrays** | [`Median_Of_Sorted_Array.c`](./Leetcode-C/Binary%20Search/Median_Of_Sorted_Array.c) | $O(\log(\min(M, N)))$ | $O(1)$ | Binary Search on Partition Cuts |
+| 33 | **Search in Rotated Sorted Array** | [`Search_Rotate_Sort_Array.c`](./Leetcode-C/Binary%20Search/Search_Rotate_Sort_Array.c) | $O(\log N)$ | $O(1)$ | Modified Binary Search on Sorted Half |
+| 35 | **Search Insert Position** | [`Search_Insert_Position.c`](./Leetcode-C/Binary%20Search/Search_Insert_Position.c) | $O(\log N)$ | $O(1)$ | Standard Lower-Bound Binary Search |
+
+---
+
 ### 📁 LIFO, Trees & Expression Nesting (`Leetcode-C/LIFO And Expression Nesting/`)
 
 | # | Problem | File Name | Time Complexity | Space Complexity | Approach / Algorithm |
@@ -40,6 +50,15 @@ A curated collection of Leetcode problems implemented in C, organized by categor
 | 94 | **Binary Tree Inorder Traversal** | [`Binary_Tree_Inorder.c`](./Leetcode-C/LIFO%20And%20Expression%20Nesting/Binary_Tree_Inorder.c) | $O(N)$ | $O(N)$ | Recursive DFS (Left $\to$ Root $\to$ Right) |
 | 145 | **Binary Tree Postorder Traversal** | [`Binary_Tree_Postoder.c`](./Leetcode-C/LIFO%20And%20Expression%20Nesting/Binary_Tree_Postoder.c) | $O(N)$ | $O(N)$ | Recursive DFS (Left $\to$ Right $\to$ Root) |
 | 225 | **Implement Stack using Queues** | [`Stack_Queue.c`](./Leetcode-C/LIFO%20And%20Expression%20Nesting/Stack_Queue.c) | Push: $O(N)$, Pop: $O(1)$ | $O(N)$ | Dynamic Circular Queue with Push Rotation |
+
+---
+
+### 📁 FIFO & Advanced Queue Designs (`Leetcode-C/FIFO/`)
+
+| # | Problem | File Name | Time Complexity | Space Complexity | Approach / Algorithm |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1670 | **Design Front Middle Back Queue** | [`Design_Front_Back_Queue.c`](./Leetcode-C/FIFO/Design_Front_Back_Queue.c) | All Ops: $O(1)$ | $O(N)$ | Doubly Linked List with Mid Pointer |
+| 1825 | **Finding MK Average** | [`Finding_MK_Average.c`](./Leetcode-C/FIFO/Finding_MK_Average.c) | Add/Calc: $O(\log M)$ | $O(M)$ | Circular Buffer + Augmented AVL Tree |
 
 ---
 
@@ -54,6 +73,11 @@ A curated collection of Leetcode problems implemented in C, organized by categor
 - **File:** [`Longest_Substring.c`](./Leetcode-C/Array/Longest_Substring.c)
 - **Description:** Finds the length of the longest substring with unique characters.
 - **Approach:** Brute-force substring inspection with early termination upon encountering duplicate characters.
+
+### Leetcode #4: Median of Two Sorted Arrays
+- **File:** [`Median_Of_Sorted_Array.c`](./Leetcode-C/Binary%20Search/Median_Of_Sorted_Array.c)
+- **Description:** Finds the median of two sorted arrays in logarithmic runtime.
+- **Approach:** Performs binary search on partition cuts of the smaller array ensuring elements on the left side are smaller than or equal to elements on the right side.
 
 ### Leetcode #5: Longest Palindromic Substring
 - **File:** [`Longest_palindrome.c`](./Leetcode-C/Array/Longest_palindrome.c)
@@ -104,6 +128,16 @@ A curated collection of Leetcode problems implemented in C, organized by categor
 - **File:** [`Longest_valid_parentheses.c`](./Leetcode-C/Array/Longest_valid_parentheses.c)
 - **Description:** Finds the length of the longest valid (well-formed) parentheses substring.
 - **Approach:** Uses a stack initialized with `-1` storing indices. On `)`, pops and computes current valid length (`i - stack[top]`).
+
+### Leetcode #33: Search in Rotated Sorted Array
+- **File:** [`Search_Rotate_Sort_Array.c`](./Leetcode-C/Binary%20Search/Search_Rotate_Sort_Array.c)
+- **Description:** Searches for a target value in an array rotated at some pivot in $O(\log N)$ time.
+- **Approach:** Uses binary search by identifying which half (left or right) is monotonically sorted, then checking whether target falls within that sorted range.
+
+### Leetcode #35: Search Insert Position
+- **File:** [`Search_Insert_Position.c`](./Leetcode-C/Binary%20Search/Search_Insert_Position.c)
+- **Description:** Returns the index of target if found; if not, returns index where it would be if inserted in order.
+- **Approach:** Standard binary search maintaining `left` and `right`. Returns `left` upon loop termination as the insertion point.
 
 ### Leetcode #44: Wildcard Matching
 - **File:** [`Wildcard_matching.c`](./Leetcode-C/Array/Wildcard_matching.c)
@@ -159,3 +193,13 @@ A curated collection of Leetcode problems implemented in C, organized by categor
 - **File:** [`Find_duplicates.c`](./Leetcode-C/Array/Find_duplicates.c)
 - **Description:** Finds duplicate number in an array of $N+1$ integers in range $[1, N]$.
 - **Approach:** Treats array as a linked list and uses Floyd's Tortoise and Hare algorithm to detect the entry point of the cycle in $O(1)$ extra space.
+
+### Leetcode #1670: Design Front Middle Back Queue
+- **File:** [`Design_Front_Back_Queue.c`](./Leetcode-C/FIFO/Design_Front_Back_Queue.c)
+- **Description:** Designs a queue supporting push and pop operations at the front, middle, and back in $O(1)$ time.
+- **Approach:** Implemented using a doubly linked list with a middle pointer (`mid`) updated on each operation based on odd/even size parity.
+
+### Leetcode #1825: Finding MK Average
+- **File:** [`Finding_MK_Average.c`](./Leetcode-C/FIFO/Finding_MK_Average.c)
+- **Description:** Calculates the average of the middle elements in the stream's last $M$ numbers after removing the $K$ smallest and $K$ largest elements.
+- **Approach:** Uses a circular buffer to track the last $M$ numbers combined with an augmented self-balancing AVL tree maintaining subtree sizes and sums for $O(\log M)$ prefix sum calculation.
